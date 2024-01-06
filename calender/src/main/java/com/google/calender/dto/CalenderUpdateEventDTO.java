@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CalenderUpdateEventDTO {
+    private String id;
     private String summary;
     private String description;
     private String location;

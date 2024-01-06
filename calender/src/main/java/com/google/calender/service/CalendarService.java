@@ -47,21 +47,22 @@ public class CalendarService {
         if (optionalEvent.isPresent()) {
             Events existingEvent = optionalEvent.get();
 
+            if (updatedEvent.getId() == null) {
+                updatedEvent.setId(existingEvent.getId());
+            }
             calendarEventMapper.updateEntity(updatedEvent, existingEvent);
-
-
+            
             eventsRepository.save(existingEvent);
         }
     }
 
-   public CalendarEventResponseDTO getEvent(String eventId) {
-    // Retrieve the event from the local server
-    Optional<Events> optionalEvent = eventsRepository.findById(eventId);
+    public CalendarEventResponseDTO getEvent(String eventId) {
+        // Retrieve the event from the local server
+        Optional<Events> optionalEvent = eventsRepository.findById(eventId);
 
-    return optionalEvent.map(event -> calendarEventMapper.convertToDtoResponse(event))
-                       .orElse(null);
-}
-
+        return optionalEvent.map(event -> calendarEventMapper.convertToDtoResponse(event))
+                .orElse(null);
+    }
 
     public void deleteEvent(String eventId) {
         // Delete the event from the local server

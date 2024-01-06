@@ -28,7 +28,7 @@ public class CalendarEventMapper {
         responseDTO.setDescription(entity.getDescription());
         responseDTO.setLocation(entity.getLocation());
         responseDTO.setStartDateTime(entity.getStart());
-        ;
+
         responseDTO.setEndDateTime(entity.getEnd());
 
         return responseDTO;
